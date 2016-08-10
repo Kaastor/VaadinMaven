@@ -9,9 +9,7 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
 import com.vaadin.tapio.googlemaps.client.events.MapClickListener;
-import com.vaadin.tapio.googlemaps.client.layers.GoogleMapKmlLayer;
 import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapPolyline;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -24,7 +22,6 @@ import java.util.ArrayList;
  * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
  * overridden to add component to the user interface and initialize non-component functionality.
  */
-//@Theme("mytheme")
 @Widgetset("com.przemys.MyAppWidgetset")
 public class MyUI extends UI {
 
@@ -58,15 +55,11 @@ public class MyUI extends UI {
                         position.getLat(), position.getLon()), true, null);
             }
         });
-
-
         layout.addComponents(googleMap);
         layout.setMargin(true);
         layout.setSpacing(true);
-
         setContent(layout);
     }
-
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
